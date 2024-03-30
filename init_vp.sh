@@ -33,15 +33,15 @@ runOpenVpn 119 udp
 runOpenVpn 443 udp
 runOpenVpn 800 udp
 
-docker build -t ikev2 - < ikev2.tar
-docker run -d \
-  --privileged \
-  -p 500:500/udp \
-  -p 4500:4500/udp \
-  --label vpn_type=ikev2 \
-  --label vpn_port="500/udp,4500/udp" \
-  --restart=always \
-  ikev2 \
-  start-vpn
+# docker build -t ikev2 - < ikev2.tar
+# docker run -d \
+#   --privileged \
+#   -p 500:500/udp \
+#   -p 4500:4500/udp \
+#   --label vpn_type=ikev2 \
+#   --label vpn_port="500/udp,4500/udp" \
+#   --restart=always \
+#   ikev2 \
+#   start-vpn
 
 
