@@ -44,4 +44,60 @@ runOpenVpn 800 udp
 #   ikev2 \
 #   start-vpn
 
+cat > 'config.json' << 'EOF'
+{
+  "log": {
+    "loglevel": "warning",
+    "access": "/dev/null",
+    "error": "/dev/null"
+  },
+  "inbounds": [
+    {
+      "port": 51888,
+      "protocol": "shadowsocks",
+      "settings": {
+        "method": "aes-256-gcm",
+        "password": "UHDFU#231skfnEE$",
+        "network": "tcp,udp",
+        "level": 0
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {},
+      "tag": "allowed"
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {},
+      "tag": "blocked"
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "domain": [
+          "google.com",
+          "apple.com",
+          "oppomobile.com"
+        ],
+        "type": "field",
+        "outboundTag": "allowed"
+      },
+      {
+        "type": "field",
+        "ip": [
+          "geoip:private"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  }
+}
+EOF
+
+docker run -d --name v2ray -v /root/config.json:/etc/v2ray/config.json -p 51888:51888 v2fly/v2fly-core run -c /etc/v2ray/config.json
+
 
