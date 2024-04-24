@@ -2,18 +2,22 @@
 set -e
 
 cd /root
-wget https://github.com/clovero/Public/raw/main/v.zip
-sudo apt install -y unzip
-unzip -Pshufudi@2021 v.zip
-cd vp
+if [ ! -f "v.zip" ]; then
+    wget https://github.com/clovero/Public/raw/main/v.zip
+    sudo apt install -y unzip
+    unzip -Pshufudi@2021 v.zip
+    cd vp
+    tar -xf openvpn.tar
+else
+    cd vp
+fi
 
-if ! command -v <the_command> &> /dev/null
-then
+if ! command -v docker &> /dev/null; then
     sh get-docker.sh
 fi
 
 docker pull kylemanna/openvpn
-tar -xf openvpn.tar
+
 OVPN_DATA=$PWD/openvpn
 runOpenVpn() {
     port=$1
