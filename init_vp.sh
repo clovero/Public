@@ -15,7 +15,8 @@ unzip -Pshufudi@2021 v.zip
 cd vp
 tar -xf openvpn.tar
 
-if ! command -v docker > /dev/null; then
+if ! command -v docker > /dev/null
+then
     echo "docker not exist! start install..."
     sh get-docker.sh
 fi
