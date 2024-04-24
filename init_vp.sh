@@ -7,7 +7,10 @@ sudo apt install -y unzip
 unzip -Pshufudi@2021 v.zip
 cd vp
 
-sh get-docker.sh
+if ! command -v <the_command> &> /dev/null
+then
+    sh get-docker.sh
+fi
 
 docker pull kylemanna/openvpn
 tar -xf openvpn.tar
