@@ -4,6 +4,7 @@ set -e
 cd /root
 
 # clean all
+rm -f init_vp.sh
 rm -f v.zip
 rm -rf vp
 rm -rf openvpn
