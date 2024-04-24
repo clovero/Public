@@ -24,7 +24,7 @@ OVPN_DATA=$PWD/openvpn
 runOpenVpn() {
     port=$1
     type=$2
-    docker run --name "openvpn:$type$port" --if-not-exists\
+    docker run --name "openvpn:$type$port" \
       -v $OVPN_DATA:/etc/openvpn -d \
       -p "$port:1194/$type" \
       --label vpn_type=openvpn \
@@ -109,6 +109,6 @@ cat > 'config.json' << 'EOF'
 }
 EOF
 
-docker run -d --name v2ray --if-not-exists -v /root/config.json:/etc/v2ray/config.json -p 51888:51888 v2fly/v2fly-core run -c /etc/v2ray/config.json
+docker run -d --name v2ray -v /root/config.json:/etc/v2ray/config.json -p 51888:51888 v2fly/v2fly-core run -c /etc/v2ray/config.json
 
 
