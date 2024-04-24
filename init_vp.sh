@@ -15,8 +15,7 @@ unzip -Pshufudi@2021 v.zip
 cd vp
 tar -xf openvpn.tar
 
-if ! command -v docker > /dev/null
-then
+if ! command -v docker > /dev/null; then
     echo "docker not exist! start install..."
     sh get-docker.sh
 fi
@@ -27,7 +26,7 @@ OVPN_DATA=$PWD/openvpn
 runOpenVpn() {
     port=$1
     type=$2
-    docker run --name "openvpn:$type$port" \
+    docker run --name "openvpn_$type$port" \
       -v $OVPN_DATA:/etc/openvpn -d \
       -p "$port:1194/$type" \
       --label vpn_type=openvpn \
