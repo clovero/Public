@@ -16,7 +16,8 @@ tar -xf openvpn.tar
 
 if ! command -v docker > /dev/null; then
     echo "docker not exist! start install..."
-    sh get-docker.sh
+    curl -fsSL https://get.docker.com -o install-docker.sh
+    sudo sh install-docker.sh
 fi
 
 docker pull kylemanna/openvpn
