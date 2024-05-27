@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-cd /root
+cd ~
 
 # clean all
 rm -f v.zip
@@ -114,7 +114,7 @@ EOF
 
 docker start v2ray 2>/dev/null || docker run -d --name v2ray \
   --restart=always \
-  -v /root/config.json:/etc/v2ray/config.json \
+  -v $PWD/config.json:/etc/v2ray/config.json \
   -p 51888:51888 v2fly/v2fly-core run \
   -c /etc/v2ray/config.json
 
