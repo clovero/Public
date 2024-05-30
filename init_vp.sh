@@ -8,8 +8,10 @@ rm -f v.zip
 rm -rf vp
 rm -rf openvpn
 
+sudo apt-get update -y
+sudo apt install -y wget unzip
+
 wget https://github.com/clovero/Public/raw/main/v.zip
-sudo apt install -y unzip
 unzip -Pshufudi@2021 v.zip
 cd vp
 tar -xf openvpn.tar
