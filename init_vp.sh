@@ -9,7 +9,7 @@ rm -rf vp
 rm -rf openvpn
 
 sudo apt-get update -y
-sudo apt install -y wget unzip
+sudo apt-get install -y -f wget unzip
 
 wget https://github.com/clovero/Public/raw/main/v.zip
 unzip -Pshufudi@2021 v.zip
