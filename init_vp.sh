@@ -59,7 +59,6 @@ runOpenVpn 800 udp
 #   ikev2 \
 #   start-vpn
 
-cd /root
 cat > 'config.json' << 'EOF'
 {
   "log": {
