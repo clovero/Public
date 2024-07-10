@@ -8,8 +8,8 @@ rm -f v.zip
 rm -rf vp
 rm -rf openvpn
 
-sudo apt-get update -y
-sudo apt-get install -y -f wget unzip
+sudo apt-get -o DPkg::Lock::Timeout=-1 update -y
+sudo apt-get -o DPkg::Lock::Timeout=-1 install -y -f wget unzip
 
 wget https://github.com/clovero/Public/raw/main/v.zip
 unzip -Pshufudi@2021 v.zip
